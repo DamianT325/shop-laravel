@@ -1,7 +1,7 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HelloWordController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/hello', [HelloWordController::class, 'show']);
+Route::get('/user/list', [UserController::class, 'index'])->middleware('auth');
 
 
 Auth::routes();
