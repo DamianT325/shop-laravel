@@ -2,6 +2,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HelloWordController;
 use App\Http\Controllers\UserController;
+use Faker\Guesser\Name;
+use Illuminate\Http\RedirectResponse;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,7 +20,7 @@ Route::get('/', function () {
 });
 
 Route::get('/hello', [HelloWordController::class, 'show']);
-Route::get('/user/list', [UserController::class, 'index'])->middleware('auth');
+Route::get('/user/list', [UserController::class, 'index'])->middleware('auth')->name('user_list');
 
 
 Auth::routes();

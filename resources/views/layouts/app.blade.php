@@ -8,14 +8,12 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-    <!-- Scripts -->
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-    <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 <body>
     <div id="app">
@@ -56,7 +54,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a href="user/list" class="dropdown-item">User list</a>
+                                    <a href="{{ route('user_list')}}" class="dropdown-item">User list</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -78,5 +76,11 @@
             @yield('content')
         </main>
     </div>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script text="type/javascript">
+        @yield('javascript')
+    </script>
 </body>
 </html>

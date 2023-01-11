@@ -11,6 +11,7 @@
       <th scope="col">Imie</th>
       <th scope="col">Naziwsko</th>
       <th scope="col">Numer Telefonu</th>
+      <th scope="col">Akcje</th>
     </tr>
   </thead>
   <tbody>
@@ -21,11 +22,21 @@
         <td>{{$user->name}}</td>
         <td>{{$user->surname}}</td>
         <td>{{$user->phone_number}}</td>
+        <td>
+            <button class="btn btn-danger btn-sm delete" data-id="{{$user->id}}">X</button>
+        </td>
     </tr>
     @endforeach
   </tbody>
 </table>
-{{ $users->links() }}
+        {{ $users->links() }}
     </div>
 </div>
+@endsection
+@section('javascript')
+    $(function() {
+        $( ".delete" ).click(function() {
+             console.log($(this).data('id'))
+            });
+    });
 @endsection
