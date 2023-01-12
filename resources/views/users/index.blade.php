@@ -34,9 +34,8 @@
 </div>
 @endsection
 @section('javascript')
-    $(function() {
-        $( ".delete" ).click(function() {
-             console.log($(this).data('id'))
-            });
-    });
+{{--    const deleteUrl = "{{ url('users') }}/";--}}
+@endsection
+@section('js-files')
+    <script src="{{ asset('js/delete.js') }}"></script>
 @endsection

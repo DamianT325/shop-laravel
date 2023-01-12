@@ -5,6 +5,10 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Exception;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\JsonResource;
+
 class UserController extends Controller
 {
     /**
@@ -78,11 +82,21 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  User
+     * @return JsonResponse
      */
-    public function destroy($id)
+    public function destroy(User $user) : JsonResponse
     {
-        //
+        try {
+            $user->delete();
+            return response()->json([
+                'status' => 'success',
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => 'Failed',
+                'message' => 'Wystapil blad'
+            ])->setStatusCode(500);
+        }
     }
 }

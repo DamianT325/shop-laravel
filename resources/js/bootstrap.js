@@ -11,9 +11,13 @@ import "bootstrap";
 
 import axios from "axios";
 window.axios = axios;
-
-window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
-window.$ = window.jQuery = require("jquery");
+try {
+    window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
+    window.$ = window.jQuery = require("jquery");
+    window.Swal = require("sweetalert2");
+} catch (error) {
+    console.log(error);
+}
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
