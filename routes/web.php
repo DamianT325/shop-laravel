@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HelloWordController;
 use App\Http\Controllers\UserController;
@@ -19,9 +21,17 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('welcome');
 });
-
+//Users
 Route::delete('/user/{user}', [UserController::class, 'destroy'])->middleware('auth');
 Route::get('/user/list', [UserController::class, 'index'])->middleware('auth')->name('user_list');
+
+//products
+Route::get('/products', [ProductController::class, 'index'])->middleware('auth')->name('products.index');
+Route::get('/products/create', [ProductController::class, 'create'])->middleware('auth')->name('products.create'); //form create prod
+Route::post('/products', [ProductController::class, 'store'])->middleware('auth')->name('products.store'); //form send
+Route::get('/products/edit/{product}', [ProductController::class, 'edit'])->middleware('auth')->name('products.edit'); //form edit
+Route::post('/products/{product}', [ProductController::class, 'update'])->middleware('auth')->name('products.update'); // update edit
+Route::delete('/products/{product}', [ProductController::class, 'destroy'])->middleware('auth')->name('products.destroy'); // delete prod
 
 
 Auth::routes();
