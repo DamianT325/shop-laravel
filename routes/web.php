@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\MainPage;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HelloWordController;
 use App\Http\Controllers\UserController;
@@ -18,9 +19,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [MainPage::class, 'index']);
 //Users
 Route::delete('/user/{user}', [UserController::class, 'destroy'])->middleware('auth');
 Route::get('/user/list', [UserController::class, 'index'])->middleware('auth')->name('user_list');
