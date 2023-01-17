@@ -10,7 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\JsonResponse;
-
+use App\Http\Requests\Product;
 class ProductController extends Controller
 {
     /**
@@ -39,12 +39,13 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param  Product  $request
      * @return RedirectResponse
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Product $request): RedirectResponse
     {
-        $product = new Product_With_Image($request->all());
+
+        $product = new Product_With_Image($request->validated());
         if ($request->hasFile('image')){
             $product->image_path = $request->file('image')->store('products');
         }
@@ -56,18 +57,20 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Products  $product
-     * @return \Illuminate\Http\Response
+     * @param Product_With_Image $product
+     * @return View
      */
-    public function show(Product_With_Image $product)
+    public function show(Product_With_Image $product) :View
     {
-        //
+        return \view('products.show', [
+            'product' => $product,
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Product_With_Image  $product
+     * @param  Product_With_Image  $product
      * @return View
      */
     public function edit(Product_With_Image $product): View
@@ -80,13 +83,13 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Products  $product
+     * @param  Product  $request
+     * @param  Product_With_Image  $product
      * @return RedirectResponse
      */
-    public function update(Request $request, Product_With_Image $product): RedirectResponse
+    public function update(Product $request, Product_With_Image $product): RedirectResponse
     {
-        $product->fill($request->all());
+        $product->fill($request->validated());
         if ($request->hasFile('image')){
             $product->image_path = $request->file('image')->store('products');
         }

@@ -31,7 +31,7 @@ Route::post('/products', [ProductController::class, 'store'])->middleware('auth'
 Route::get('/products/edit/{product}', [ProductController::class, 'edit'])->middleware('auth')->name('products.edit'); //form edit
 Route::post('/products/{product}', [ProductController::class, 'update'])->middleware('auth')->name('products.update'); // update edit
 Route::delete('/products/{product}', [ProductController::class, 'destroy'])->middleware('auth')->name('products.destroy'); // delete prod
-
+Route::get('/products/show/{product}', [ProductController::class, 'show'])->name('products.show')->middleware('auth');
 
 Auth::routes();
 

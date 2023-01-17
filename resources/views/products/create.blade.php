@@ -15,7 +15,7 @@
                                 <label for="name" class="col-md-4 col-form-label text-md-end">Nazwa</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}"  autocomplete="name" autofocus>
 
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -29,7 +29,7 @@
                                 <label for="surname" class="col-md-4 col-form-label text-md-end">Opis</label>
 
                                 <div class="col-md-6">
-                                    <textarea id="description" maxlength="1500" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" required autocomplete="description" autofocus></textarea>
+                                    <textarea id="description" maxlength="1500" class="form-control @error('description') is-invalid @enderror" name="description" required autocomplete="description" autofocus>{{ old('description') }}</textarea>
 
                                     @error('surname')
                                     <span class="invalid-feedback" role="alert">
@@ -69,7 +69,7 @@
                                 <label for="image" class="col-md-4 col-form-label text-md-end">Zdjecie</label>
 
                                 <div class="col-md-6">
-                                    <input id="image" type="file" step="0.01" class="form-control @error('image') is-invalid @enderror" name="image">
+                                    <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image">
 
                                     @error('image')
                                     <span class="invalid-feedback" role="alert">

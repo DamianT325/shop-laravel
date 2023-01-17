@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('product__with__images', function (Blueprint $table) {
             $table->id();
-            $table->string('image_path', '500');
+            $table->string('image_path', '500')->nullable();
             $table->string('name' ,500);
             $table->string('description', 1500);
             $table->integer('amount', );

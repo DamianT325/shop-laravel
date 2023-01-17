@@ -33,6 +33,7 @@
                         <td>{{$product->price}}</td>
                         <td>
                             <a href="{{route('products.edit' , $product->id)}}" class="btn btn-sm btn-primary me-2">Edytuj</a>
+                            <a href="{{route('products.show' , $product->id)}}" class="btn btn-sm btn-primary me-2">Podgląd</a>
                             <button class="btn btn-danger btn-sm delete" data-id="{{$product->id}}">Usun</button>
                         </td>
                     </tr>
