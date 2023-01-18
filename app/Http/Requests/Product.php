@@ -29,5 +29,6 @@ class Product extends FormRequest
             'price' => 'required|numeric|between:0,999999.99|min:0',
             'amount' => 'required|integer|min:0',
             'image' => 'nullable|mimes:jpg,png,gif,webm',
+            'category_id' => 'nullable|integer|min:0'
         ];
 }}

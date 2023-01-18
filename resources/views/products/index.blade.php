@@ -19,6 +19,7 @@
                     <th scope="col">Opis</th>
                     <th scope="col">Ilość</th>
                     <th scope="col">Cena</th>
+                    <th scope="col">{{__('shop.product.fields.category')}}</th>
                     <th scope="col">Akcje</th>
                 </tr>
                 </thead>
@@ -31,6 +32,7 @@
                         <td>{{$product->description}}</td>
                         <td>{{$product->amount}}</td>
                         <td>{{$product->price}}</td>
+                            <td>@if(!is_null($product->category)) {{$product->category->name}}@endif</td>
                         <td>
                             <a href="{{route('products.edit' , $product->id)}}" class="btn btn-sm btn-primary me-2">Edytuj</a>
                             <a href="{{route('products.show' , $product->id)}}" class="btn btn-sm btn-primary me-2">Podgląd</a>

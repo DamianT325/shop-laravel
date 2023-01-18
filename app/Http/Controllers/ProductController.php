@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-//use App\Models\Products;
 use App\Models\Product_With_Image;
+use App\Models\ProductCategory;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -33,7 +33,9 @@ class ProductController extends Controller
      */
     public function create(): View
     {
-        return \view('products.create');
+        return \view('products.create', [
+            'categories' => ProductCategory::all()
+        ]);
     }
 
     /**
@@ -44,7 +46,6 @@ class ProductController extends Controller
      */
     public function store(Product $request): RedirectResponse
     {
-
         $product = new Product_With_Image($request->validated());
         if ($request->hasFile('image')){
             $product->image_path = $request->file('image')->store('products');
@@ -77,6 +78,7 @@ class ProductController extends Controller
     {
         return \view('products.edit', [
             'product' => $product,
+            'categories' => ProductCategory::all()
         ]);
     }
 
