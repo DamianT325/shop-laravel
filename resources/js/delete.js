@@ -1,6 +1,5 @@
 $(function() {
     $('.delete').click(function() {
-        console.log('dsadas')
 
         Swal.fire({
             title: "Czy na pewno chcesz usunac rekord?",

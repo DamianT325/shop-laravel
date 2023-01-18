@@ -6,7 +6,6 @@ var __webpack_exports__ = {};
 $(function () {
   $('.delete').click(function () {
     var _this = this;
-    console.log('dsadas');
     Swal.fire({
       title: "Czy na pewno chcesz usunac rekord?",
       icon: 'warning',
