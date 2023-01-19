@@ -12,12 +12,27 @@ use Illuminate\View\View;
 class MainPage extends Controller
 {
     public function index(Request $request): View|JsonResponse {
-        $filter = $request->query('filter');
+        $filters = $request->query('filter');
+        $paginate = $request->query('paginate') ?? 5;
+        $query = Product_With_Image::query();
+        if (!is_null($filters)) {
+            if (array_key_exists('categories', $filters)) {
+                $query = $query->whereIn('category_id', $filters['categories']);
+            }
+            if (!is_null($filters['price_min'])) {
+                $query = $query->where('price', '>=', $filters['price_min']);
+            }
+            if (!is_null($filters['price_max'])) {
+                $query = $query->where('price', '<=', $filters['price_max']);
+            }
+
+            return response()->json($query->paginate($paginate));
+        }
 
 
 
         return view('main', [
-            'products' => Product_With_Image::paginate(6),
+            'products' => $query->paginate(6),
             'categories' => ProductCategory::orderBy('name', 'ASC')->get()
         ]);
     }

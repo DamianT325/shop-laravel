@@ -5,11 +5,11 @@
         <div class="row">
             <div class="col-md-8 order-md-2 col-lg-9">
                 <div class="container-fluid">
-                    <div class="row   mb-5">
+                    <div class="row mb-5">
                         <div class="col-12">
                             <div class="dropdown text-md-left text-center float-md-left mb-3 mt-3 mt-md-0 mb-md-0">
                                 <label class="mr-2">Sortuj:</label>
-                                <a class="btn btn-lg btn-light dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Rosnąco<span class="caret"> </span></a>
+                                <a class="btn btn-lg btn-light dropdown-toggle" data-toggle="dropdown"  data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Rosnąco<span class="caret"> </span></a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown" x-placement="bottom-start" style="position: absolute; transform: translate3d(71px, 48px, 0px); top: 0px; left: 0px; will-change: transform;">
                                     <a class="dropdown-item" href="#">Relevance</a>
                                     <a class="dropdown-item" href="#">Price Descending</a>
@@ -23,7 +23,7 @@
                             </div>
                             <div class="dropdown float-right">
                                 <label class="mr-2">Pokaż:</label>
-                                <a class="btn btn-lg btn-light dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">9 <span class="caret"></span></a>
+                                <a class="btn btn-lg btn-light dropdown-toggle" data-bs-toggle="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">9 <span class="caret"></span></a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" x-placement="bottom-end" style="will-change: transform; position: absolute; transform: translate3d(120px, 48px, 0px); top: 0px; left: 0px;">
                                     <a class="dropdown-item" href="#">12</a>
                                     <a class="dropdown-item" href="#">24</a>
@@ -96,17 +96,20 @@
                 <h6 class="text-uppercase mt-5 mb-3 font-weight-bold">{{__('shop.welcome.price')}}</h6>
                 <div class="price-filter-control">
                     <input type="number" class="form-control w-50 pull-left mb-2" name="filter[price_min]" placeholder="50" id="price-min-control">
-                    <input type="number" class="form-control w-50 pull-right" placeholder="150" name="filter[price_min]" id="price-max-control">
+                    <input type="number" class="form-control w-50 pull-right" placeholder="150" name="filter[price_max]" id="price-max-control">
                 </div>
                 <input id="ex2" type="text" class="slider " value="50,150" data-slider-min="10" data-slider-max="200" data-slider-step="5" data-slider-value="[50,150]" data-value="50,150" style="display: none;">
                 <div class="divider mt-5 mb-5 border-bottom border-secondary"></div>
                 <a href="#" class="btn btn-lg btn-block btn-primary mt-5 filter">{{__('shop.welcome.filter')}}</a>
             </form>
 
+
         </div>
     </div>
 @endsection
-
+@section('javascript')
+    const storagePath = '{{ asset("storage")}}/'
+@endsection
 @section('js-files')
     <script src="{{asset("js/main.js")}}"></script>
 @endsection
